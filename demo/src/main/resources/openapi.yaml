@@ -1,0 +1,39 @@
+
+openapi: 3.0.3
+
+info:
+  title: Student API
+  description: API to retrieve student details
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /students/{id}:
+    get:
+      summary: Get student details
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: Student found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  branch:
+                    type: string
+
+        '404':
+          description: Student not found
